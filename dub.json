@@ -3,7 +3,7 @@
 	"description": "A very small Wavefront .obj file format library.",
 	"copyright": "Copyright © 2015, Alexander Milushev <zunkree@gmail.com>",
 	"license": "MIT",
-	"authors": ["Alexander Milushev <zunkree@gmail.com>"],
+	"authors": ["Alexander Milushev <zunkree@gmail.com>", "Lev Denisov <levdenisov666@gmail.com>"],
 	"targetType": "library",
 	"dependencies": {
 		"utga": ">=0.0.1"

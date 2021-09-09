@@ -8,14 +8,18 @@ import std.algorithm;
 
 public import wavefront.geometry;
 
+struct Face
+{
+	int v;
+	int t;
+}
 
 class Model
 {
 private:
 	Vec2f[] textures_;
 	Vec3f[] verts_;
-	int[][] faces_;
-
+	Face[][] faces_;
 
 public:
 
@@ -34,10 +38,12 @@ public:
 				textures_ ~= t;
 			}
 			else if (line.startsWith("f ")) {
-				int[] face;
-				int tmp;
-				foreach (pol; line[2..$].splitter) {
-					tmp = to!int(pol.splitter("/").array[0]) - 1;
+				Face tmp;
+				Face[] face;
+				foreach (pol; line[2..$].splitter)
+				{
+					tmp.v = to!int(pol.splitter("/").array[0]) - 1;
+					tmp.t = to!int(pol.splitter("/").array[1]) - 1;
 					face ~= tmp;
 				}
 				faces_ ~= face;

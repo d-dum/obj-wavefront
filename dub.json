@@ -1,5 +1,5 @@
 {
-	"name": "wavefront-obj",
+	"name": "obj-wavefront",
 	"description": "A very small Wavefront .obj file format library.",
 	"copyright": "Copyright © 2015, Alexander Milushev <zunkree@gmail.com>",
 	"license": "MIT",

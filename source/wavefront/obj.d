@@ -12,7 +12,7 @@ public import wavefront.geometry;
 class Model
 {
 private:
-
+	Vec2f[] textures_;
 	Vec3f[] verts_;
 	int[][] faces_;
 
@@ -28,6 +28,11 @@ public:
 				v.raw = line[2..$].splitter.map!(to!float).array;
 				verts_ ~= v;
 			}
+			else if (line.startsWith("vt ")){
+				Vec2f t;
+				t.raw = line[2..$].splitter.map!(to!float).array;
+				textures_ ~= t;
+			}
 			else if (line.startsWith("f ")) {
 				int[] face;
 				int tmp;
@@ -38,7 +43,7 @@ public:
 				faces_ ~= face;
 			}
 		}
-		stderr.writefln("# v# %d f# %d", verts_.length, faces_.length);
+		stderr.writefln("# v# %d t# %d f# %d", verts_.length, textures_.length, faces_.length);
 	}
 
 	@property
@@ -53,6 +58,12 @@ public:
 		return faces_.length;
 	}
 
+	@property
+	auto ntextures()
+	{
+		return textures_.length;
+	}
+
 	auto face(int idx)
 	{
 		return faces_[idx];
@@ -63,9 +74,20 @@ public:
 		return verts_[idx];
 	}
 
+	auto texture(int idx)
+	{
+		return textures_[idx];
+	}
+
 	@property
 	auto faces()
 	{
 		return faces_;
+	}
+
+	@property
+	auto textures()
+	{
+		return textures_;
 	}
 }

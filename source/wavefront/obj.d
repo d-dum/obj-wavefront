@@ -12,6 +12,7 @@ struct Face
 {
 	int v;
 	int t;
+	int n;
 }
 
 class Model
@@ -44,6 +45,7 @@ public:
 				{
 					tmp.v = to!int(pol.splitter("/").array[0]) - 1;
 					tmp.t = to!int(pol.splitter("/").array[1]) - 1;
+					tmp.n = to!int(pol.splitter("/").array[2]) - 1;
 					face ~= tmp;
 				}
 				faces_ ~= face;
